@@ -34,13 +34,6 @@
 			<optional>true</optional>
 		</dependency>
 
-
-		<!--		Retry-->
-		<dependency>
-			<groupId>org.springframework.retry</groupId>
-			<artifactId>spring-retry</artifactId>
-		</dependency>
-
 		<!--GSON-->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
