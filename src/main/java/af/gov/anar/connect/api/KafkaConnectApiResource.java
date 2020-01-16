@@ -1,7 +1,7 @@
 package af.gov.anar.connect.api;
 
 
-import af.gov.anar.connect.core.KafkaConnectIntegrationService;
+import af.gov.anar.connect.service.KafkaConnectIntegrationService;
 import af.gov.anar.connect.util.Utility;
 import org.json.JSONObject;
 import org.sourcelab.kafka.connect.apiclient.request.dto.*;
@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/api/integrations")
+@RequestMapping(value = "/api/connect")
 public class KafkaConnectApiResource {
 
     @Autowired
@@ -83,7 +83,6 @@ public class KafkaConnectApiResource {
     ResponseEntity<Object> addConnector(@RequestBody(required = true) String connectorString)
     {
         JSONObject jsonConfig = utility.parse(connectorString);
-
         String connectorName = jsonConfig.getString("name");
         String connectorConfig =jsonConfig.getString("config");
 

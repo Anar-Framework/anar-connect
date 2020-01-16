@@ -1,4 +1,4 @@
-package af.gov.anar.connect.core;
+package af.gov.anar.connect.service;
 
 
 import af.gov.anar.connect.util.Utility;
