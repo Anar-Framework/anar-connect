@@ -1,4 +1,4 @@
-### Loggin Utility Library of Anar Framework
+### Anar Framewok and Kafka Connect Framework Integration Module
 
 #### Usage Guide
 
