@@ -1,7 +1,8 @@
 package af.gov.anar.connect.core.init;
 
-import af.gov.nsia.core.kafka.Topics;
-import af.gov.nsia.core.kafka.connect.KafkaConnectIntegrationService;
+
+import af.gov.anar.connect.core.KafkaConnectIntegrationService;
+import af.gov.anar.connect.core.Topics;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

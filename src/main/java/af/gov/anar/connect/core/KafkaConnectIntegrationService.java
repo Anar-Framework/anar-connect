@@ -34,7 +34,6 @@ public class KafkaConnectIntegrationService {
      * This configuration also allows you to define some optional details on your connection,
      * such as using an outbound proxy (authenticated or not), SSL client settings, etc..
      */
-    @Loggable
     public Configuration configuration(){
         final Configuration config = new Configuration(kafkaConnectHost);
         return config;
@@ -43,7 +42,6 @@ public class KafkaConnectIntegrationService {
     /*
      * Create an instance of KafkaConnectClient, passing your configuration.
      */
-    @Loggable
     public KafkaConnectClient client()
     {
         final KafkaConnectClient client = new KafkaConnectClient(configuration());
@@ -56,14 +54,12 @@ public class KafkaConnectIntegrationService {
      *
      * For example, get a list of deployed connectors:
      */
-    @Loggable
     @Retryable
     public Collection<String> getConnectors()
     {
         return client().getConnectors();
     }
 
-    @Loggable
     @Retryable
     public Collection<String> getSourceConnectors()
     {
@@ -77,8 +73,6 @@ public class KafkaConnectIntegrationService {
         return sourceConnectors;
     }
 
-
-    @Loggable
     @Retryable
     public Collection<String> getSinkConnectors()
     {
@@ -96,7 +90,6 @@ public class KafkaConnectIntegrationService {
     /*
      * Or to deploy a new connector:
      */
-    @Loggable
     @Retryable
     public ConnectorDefinition deployConnector(String name, String configString)
     {
@@ -119,7 +112,6 @@ public class KafkaConnectIntegrationService {
     }
 
 
-    @Loggable
     @Retryable
     public ConnectorDefinition deployConnector(String name, Map<String, String> config)
     {
@@ -145,7 +137,6 @@ public class KafkaConnectIntegrationService {
      * @param connectorName Name of connector.
      * @return Connector details.
      */
-    @Loggable
     @Retryable
     public ConnectorDefinition getConnector(String connectorName) {
         return client().getConnector(connectorName);
@@ -157,7 +148,6 @@ public class KafkaConnectIntegrationService {
      * @param connectorName Name of connector.
      * @return Configuration for connector.
      */
-    @Loggable
     @Retryable
     public Map<String, String> getConnectorConfig(final String connectorName) {
         return client().getConnectorConfig(connectorName);
@@ -170,7 +160,6 @@ public class KafkaConnectIntegrationService {
      * @param connectorName Name of connector.
      * @return Status details of the connector.
      */
-    @Loggable
     @Retryable
     public ConnectorStatus getConnectorStatus(final String connectorName) {
         return client().getConnectorStatus(connectorName);
@@ -183,7 +172,6 @@ public class KafkaConnectIntegrationService {
      * @param connectorDefinition Defines the new connector to deploy
      * @return connector info.
      */
-    @Loggable
     @Retryable
     public ConnectorDefinition addConnector(final NewConnectorDefinition connectorDefinition) {
         return client().addConnector(connectorDefinition);
@@ -197,7 +185,6 @@ public class KafkaConnectIntegrationService {
      * @param config Configuration values to set.
      * @return ConnectorDefinition describing the connectors configuration.
      */
-    @Loggable
     @Retryable
     public ConnectorDefinition updateConnectorConfig(final String connectorName, final Map<String, String> config) {
         return client().updateConnectorConfig(connectorName, config);
@@ -210,7 +197,7 @@ public class KafkaConnectIntegrationService {
      * @param connectorName Name of connector to restart.
      * @return Boolean true if success.
      */
-    @Loggable
+    
     @Retryable
     // @Async
     public Boolean restartConnector(String connectorName) {
@@ -224,7 +211,7 @@ public class KafkaConnectIntegrationService {
      * @param connectorName Name of connector to pause.
      * @return Boolean true if success.
      */
-    @Loggable
+    
     @Retryable
     public Boolean pauseConnector(final String connectorName) {
         return client().pauseConnector(connectorName);
@@ -237,7 +224,7 @@ public class KafkaConnectIntegrationService {
      * @param connectorName Name of connector to resume.
      * @return Boolean true if success.
      */
-    @Loggable
+    
     @Retryable
     public Boolean resumeConnector(final String connectorName) {
         return client().resumeConnector(connectorName);
@@ -250,7 +237,7 @@ public class KafkaConnectIntegrationService {
      * @param connectorName Name of connector to resume.
      * @return Boolean true if success.
      */
-    @Loggable
+    
     @Retryable
     public Boolean deleteConnector(final String connectorName) {
         return client().deleteConnector(connectorName);
@@ -263,7 +250,7 @@ public class KafkaConnectIntegrationService {
      * @param connectorName Name of connector to retrieve tasks for.
      * @return Collection of details about each task.
      */
-    @Loggable
+    
     @Retryable
     public Collection<Task> getConnectorTasks(final String connectorName) {
         return client().getConnectorTasks(connectorName);
@@ -277,7 +264,7 @@ public class KafkaConnectIntegrationService {
      * @param taskId Id of task to get status for.
      * @return Details about task.
      */
-    @Loggable
+    
     @Retryable
     public TaskStatus getConnectorTaskStatus(final String connectorName, final int taskId) {
         return client().getConnectorTaskStatus(connectorName, taskId);
@@ -292,7 +279,7 @@ public class KafkaConnectIntegrationService {
      * @param taskId Id of task to restart
      * @return True if a success.
      */
-    @Loggable
+    
     @Retryable
     public Boolean restartConnectorTask(final String connectorName, final int taskId) {
         return client().restartConnectorTask(connectorName, taskId);
@@ -304,7 +291,7 @@ public class KafkaConnectIntegrationService {
      *
      * @return Collection of available connector plugins.
      */
-    @Loggable
+    
     @Retryable
     public Collection<ConnectorPlugin> getConnectorPlugins() {
         return client().getConnectorPlugins();
@@ -318,7 +305,7 @@ public class KafkaConnectIntegrationService {
      * @param configDefinition Defines the configuration to validate.
      * @return Results of the validation.
      */
-    @Loggable
+    
     @Retryable
     public ConnectorPluginConfigValidationResults validateConnectorPluginConfig(final ConnectorPluginConfigDefinition configDefinition) {
         return client().validateConnectorPluginConfig(configDefinition);
